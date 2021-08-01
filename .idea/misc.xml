@@ -4,9 +4,11 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.33645833333333336" />
+        <entry key="app/src/main/res/layout/activity_add_new_list.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_write_the_words.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/main_fragment.xml" value="0.19610507246376813" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2953125" />
       </map>
     </option>
   </component>

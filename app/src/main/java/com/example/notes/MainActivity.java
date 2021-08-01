@@ -3,6 +3,8 @@ package com.example.notes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<String> noteContent = new ArrayList<>();
+
     ListView listView;
 
 
@@ -26,6 +29,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("com.example.notes", MODE_PRIVATE);
+
+        int listSize = sharedPreferences.getInt("listSize", 0);
+
+        for (int j = 0; j < listSize; j++) {
+
+            noteContent.add("");
+        }
 
 
     }
@@ -103,6 +115,38 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+            }
+        });
+
+        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                new AlertDialog.Builder(MainActivity.this)
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .setTitle("Delete it?")
+                        .setMessage("Really want to delete this note?")
+                        .setPositiveButton("Delete it", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                                noteContent.remove(position);
+                                int listSize = sharedPreferences.getInt("listSize", 0);
+                                listSize--;
+                                sharedPreferences.edit().putInt("listSize", listSize).commit();
+
+                                arrayAdapter.notifyDataSetChanged();
+
+                            }
+                        }).setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).show();
+
+
+                return true;
             }
         });
 

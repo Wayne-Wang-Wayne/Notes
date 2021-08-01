@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
         int listSize = sharedPreferences.getInt("listSize", 0);
 
         for (int j = 0; j < listSize; j++) {
-
             noteContent.add("");
         }
 

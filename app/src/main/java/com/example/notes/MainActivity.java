@@ -42,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
             noteContent.add("Please take your note !");
             listSize++;
-            sharedPreferences.edit().putInt("listSize", listSize);
-            sharedPreferences.edit().commit();
+            sharedPreferences.edit().putInt("listSize", listSize).commit();
 
         }
 

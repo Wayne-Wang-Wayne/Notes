@@ -34,8 +34,8 @@ public class WriteTheWords extends AppCompatActivity {
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
+    protected void onPause() {
+        super.onPause();
 
         Intent intent = getIntent();
 
@@ -43,9 +43,8 @@ public class WriteTheWords extends AppCompatActivity {
 
         String editContent = editText.getText().toString();
 
-        sharedPreferences.edit().putString("content" + String.valueOf(noteNumber), editContent);
+        sharedPreferences.edit().putString("content" + String.valueOf(noteNumber), editContent).commit();
 
-        sharedPreferences.edit().commit();
 
     }
 }

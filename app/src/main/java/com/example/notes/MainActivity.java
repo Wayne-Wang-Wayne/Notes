@@ -131,9 +131,19 @@ public class MainActivity extends AppCompatActivity {
 
                                 noteContent.remove(position);
                                 int listSize = sharedPreferences.getInt("listSize", 0);
+
+
+                                for (int i = position; i < listSize; i++) {
+                                    sharedPreferences.edit().putString("content" + String.valueOf(i), sharedPreferences.getString("content" + String.valueOf(i + 1), "")).commit();
+                                }
+
                                 listSize--;
+
                                 sharedPreferences.edit().putInt("listSize", listSize).commit();
 
+                                for (int k = 0; k < listSize; k++) {
+                                    noteContent.set( k, sharedPreferences.getString("content" + String.valueOf(k), ""));
+                                }
                                 arrayAdapter.notifyDataSetChanged();
 
                             }

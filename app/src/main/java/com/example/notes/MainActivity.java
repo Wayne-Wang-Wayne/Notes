@@ -43,11 +43,12 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         super.onOptionsItemSelected(item);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("com.example.notes", MODE_PRIVATE);
-        int listSize = sharedPreferences.getInt("listSize", 0);
 
         switch (item.getItemId()) {
             case R.id.addNewNote:
+
+                SharedPreferences sharedPreferences = getSharedPreferences("com.example.notes", MODE_PRIVATE);
+                int listSize = sharedPreferences.getInt("listSize", 0);
 
                 noteContent.add("");
                 listSize++;

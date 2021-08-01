@@ -31,7 +31,7 @@ public class AddNewList extends AppCompatActivity {
 
         String editContent = editText.getText().toString();
 
-        sharedPreferences.edit().putString("content" + listSize, editContent).commit();
+        sharedPreferences.edit().putString("content" + String.valueOf(listSize-1), editContent).commit();
 
     }
 }
